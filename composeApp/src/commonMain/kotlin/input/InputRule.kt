@@ -15,8 +15,6 @@ class InputRule(
     fun toRuleResult(input: String) =
         InputRuleResult(description, predicate(input), priority.ordinal)
 
-
-
     companion object {
 
         fun minLength(
@@ -123,9 +121,18 @@ class InputRule(
         ) = InputRule("${inputType.type} must be a valid state", priority) {
             it.matches(Regex("^[A-Z]{2}$"))
         }
+
+        fun isInteger(
+            inputType: InputType,
+            priority: Priority = Priority.Low
+        ) = InputRule("${inputType.type} must be a valid integer", priority) {
+            it.toIntOrNull() != null
+        }
+
         //add more custom InputRules...
 
     }
+
 
 }
 

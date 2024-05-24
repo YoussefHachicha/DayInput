@@ -46,6 +46,13 @@ fun App() {
         }
 
 
+        val intRules = remember {
+            InputRuleBuilder(InputType.Input)
+                .isInt()
+                .build()
+        }
+
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxWidth()
@@ -62,7 +69,7 @@ fun App() {
                     OutlinedField(
                         value = userName,
                         onValueChange = { userName = it },
-                        rules = userNameRules,
+                        rules = intRules,
                         placeholder = InputType.Username.type
                     )
 
